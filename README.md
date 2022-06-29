@@ -1,3 +1,11 @@
+## Installation
+Run docker compose:
+```
+docker-compose up
+```
+
+
+## Using kafka
 create topic test:
 ```
 docker exec broker kafka-topics --bootstrap-server broker:9092 --create --topic test
@@ -24,7 +32,7 @@ docker exec broker kafka-console-consumer --bootstrap-server broker:9092 --topic
 ```
 
 
-links:
+## Links
 ```
 https://developer.confluent.io/quickstart/kafka-docker/
 https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05
