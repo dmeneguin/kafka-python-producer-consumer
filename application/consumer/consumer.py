@@ -2,7 +2,7 @@
 import json
 from time import sleep
 from bs4 import BeautifulSoup
-from kafka import KafkaConsumer
+from kafka import KafkaConsumer, TopicPartition
 
 def parse(markup):
     title = '-'
@@ -58,12 +58,17 @@ print('Running Consumer..')
 parsed_records = []
 topic_name = 'raw_recipes'
 
-consumer = KafkaConsumer(topic_name, auto_offset_reset='earliest',
-                            bootstrap_servers=['localhost:9092'], api_version=(0, 10), consumer_timeout_ms=1000)
-for msg in consumer:
-    html = msg.value
-    result = parse(html)
-    parsed_records.append(result)
-consumer.close()
-sleep(5)
-print(parsed_records)
+consumer = KafkaConsumer(
+     bootstrap_servers=['localhost:9092'],
+     auto_offset_reset='earliest'
+)
+consumer.subscribe([topic_name])
+while True:
+    records = consumer.poll(timeout_ms=1000)
+    for topic_data, consumer_records in records.items():
+        print('--------------- TOPIC ---------------')
+        print(topic_data)
+        for consumer_record in consumer_records:
+            print('-------------- MESSAGE --------------')
+            print(parse(consumer_record.value.decode('utf-8')))
+        print('-------------------------------------')

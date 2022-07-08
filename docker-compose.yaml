@@ -24,15 +24,3 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
-
-  message_producer:
-    image: message_producer
-    build:
-        context: ./application/producer
-        dockerfile: ./Dockerfile
-
-  message_consumer:
-    image: message_consumer
-    build:
-        context: ./application/consumer
-        dockerfile: ./Dockerfile
