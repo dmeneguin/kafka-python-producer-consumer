@@ -36,3 +36,7 @@ docker exec broker kafka-console-consumer --bootstrap-server broker:9092 --topic
 [https://developer.confluent.io/quickstart/kafka-docker/](https://developer.confluent.io/quickstart/kafka-docker/)
 
 [https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05](https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05)
+
+[https://kafka-python.readthedocs.io/en/master/apidoc/KafkaConsumer.html](https://kafka-python.readthedocs.io/en/master/apidoc/KafkaConsumer.html)
+
+
